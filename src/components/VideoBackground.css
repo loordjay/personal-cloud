@@ -1,0 +1,115 @@
+/* Video Background Styles for LandingPage */
+
+/* Background Video Styles */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.8;
+  filter: brightness(0.6) contrast(1.2);
+  transition: opacity 0.3s ease;
+}
+
+.background-video:hover {
+  opacity: 0.9;
+}
+
+/* Video Overlay */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(99, 102, 241, 0.2) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 0;
+}
+
+/* Hero Content Enhancement for Video Background */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .hero-content {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Video Loading Animation */
+@keyframes videoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+.background-video {
+  animation: videoFadeIn 2s ease-out;
+}
+
+/* Responsive Video Adjustments */
+@media (max-width: 768px) {
+  .background-video {
+    object-position: center center;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+}
+
+/* Video Performance Optimization */
+.background-video {
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+/* Fallback for Video Loading */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  z-index: -2;
+  pointer-events: none;
+}
