@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   // Add the base path from an environment variable.
   // It defaults to '/' if the variable is not set.
-  base: process.env.VITE_BASE_URL || '/personal-cloud',
+  base: process.env.VITE_BASE_URL || '/',
   server: {
     proxy: {
       '/api': {
